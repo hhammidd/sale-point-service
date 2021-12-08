@@ -4,14 +4,12 @@ import java.util.List;
 
 public class SalePointsInfoTo {
     private List<SalePointTo> salePointTos;
-    private Integer count;
 
     public SalePointsInfoTo() {
     }
 
-    public SalePointsInfoTo(List<SalePointTo> salePointTos, Integer count) {
+    public SalePointsInfoTo(List<SalePointTo> salePointTos) {
         this.salePointTos = salePointTos;
-        this.count = count;
     }
 
     public List<SalePointTo> getSalePointTos() {
@@ -20,13 +18,5 @@ public class SalePointsInfoTo {
 
     public void setSalePointTos(List<SalePointTo> salePointTos) {
         this.salePointTos = salePointTos;
-    }
-
-    public Integer getCount() {
-        return count;
-    }
-
-    public void setCount(Integer count) {
-        this.count = count;
     }
 }

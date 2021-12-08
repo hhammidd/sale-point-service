@@ -1,6 +1,5 @@
 package com.ireulink.demo.dto;
 
-import java.util.List;
 
 public class SalePointGeoWithCombineFilter {
     private Long id;

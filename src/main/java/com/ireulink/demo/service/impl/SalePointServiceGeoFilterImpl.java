@@ -45,7 +45,7 @@ public class SalePointServiceGeoFilterImpl implements SalePointGeoFilterService 
             salePointTos.add(salePointTo);
         }
 
-        return new SalePointsInfoTo(salePointTos, salePointTos.size());
+        return new SalePointsInfoTo(salePointTos);
     }
 
     @Override
@@ -66,6 +66,7 @@ public class SalePointServiceGeoFilterImpl implements SalePointGeoFilterService 
             salePointTos.add(salePointTo);
         }
 
-        return new SalePointsInfoTo(salePointTos, salePointTos.size());
+        System.out.println("The number of sale point filtered:  " + salePointTos.size());
+        return new SalePointsInfoTo(salePointTos);
     }
 }
