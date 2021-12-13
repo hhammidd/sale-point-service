@@ -5,6 +5,7 @@ import com.ireulink.demo.service.SalePointGeoFilterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 
 @RestController
@@ -61,9 +62,22 @@ public class SalePointsGeoController {
     }
 
     @PostMapping("/filter-sale-point-test")
-    public String getsalePointByGeoFilterAndRsegins(@RequestBody SalePointGeoWithCombineFilter salePointGeoWithCombineFilter) {
-        System.out.printf("test");
-        return salePointGeoWithCombineFilter.getMarket();
+    public SalePointsInfoTo getsalePointByGeoFilterAndRsegins(@RequestBody SalePointGeoBeta salePointGeoWithCombineFilter) {
+        System.out.printf("test market " + salePointGeoWithCombineFilter.getMarket());
+
+        return new SalePointsInfoTo(Arrays.asList(
+                new SalePointTo(1L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(2L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(3L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(4L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(5L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(6L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(7L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(8L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(9L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(10L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(11L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws")
+        ));
         //TODO check
     }
 }
