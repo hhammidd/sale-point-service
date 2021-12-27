@@ -83,9 +83,10 @@ public class SalePointsGeoController {
 
     @PostMapping("/filter-with-map")
     public SalePointsInfoTo getsalePointsWithFeatures(@RequestBody GeosTo geosTo) {
-        System.out.printf("test geos " + geosTo);
+//        System.out.printf("test geos " + geosTo);
         // Create regions/province/ .... and return sales
         geosTo.getGeos().stream().forEach(s -> System.out.println(s));
+        System.out.println("============finished===========");
         return new SalePointsInfoTo(Arrays.asList(
                 new SalePointTo(1L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
                 new SalePointTo(2L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
