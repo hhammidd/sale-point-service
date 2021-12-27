@@ -80,4 +80,25 @@ public class SalePointsGeoController {
         ));
         //TODO check
     }
+
+    @PostMapping("/filter-with-map")
+    public SalePointsInfoTo getsalePointsWithFeatures(@RequestBody GeosTo geosTo) {
+        System.out.printf("test geos " + geosTo);
+        // Create regions/province/ .... and return sales
+        geosTo.getGeos().stream().forEach(s -> System.out.println(s));
+        return new SalePointsInfoTo(Arrays.asList(
+                new SalePointTo(1L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(2L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(3L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(4L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(5L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(6L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(7L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(8L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(9L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(10L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(11L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws")
+        ));
+        //TODO check
+    }
 }
