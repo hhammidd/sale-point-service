@@ -65,7 +65,7 @@ pipeline {
 
         stage("Install helm and deploy") {
             steps{
-                sh " helm upgrade micro-map  ~/apps/apps-helm-charts/sale-point-service/ --set tag=${params.IMAGE_TAG}"
+                sh " helm upgrade sale-point-service  ~/apps/apps-helm-charts/sale-point-service/ --set tag=${params.IMAGE_TAG}"
             }
         }
 
