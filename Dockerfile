@@ -9,5 +9,5 @@
 
 FROM openjdk:8
 EXPOSE 8089
-ADD target/micro-map.jar micro-map.jar
-ENTRYPOINT ["java","-jar","/micro-map.jar"]
+ADD target/sale-point-service.jar sale-point-service.jar
+ENTRYPOINT ["java","-jar","/sale-point-service.jar"]
