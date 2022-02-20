@@ -17,7 +17,6 @@ public class CompanieInfoController {
     @Autowired
     private CompaniesInfoService companiesInfoService;
 
-
     @PostMapping
     public SalePointsInfoTo getsalePointByGeoFilter(@RequestBody SalePointGeoFilter salePointGeoFilter) {
         return companiesInfoService.getCompaniesInfo();

@@ -24,7 +24,7 @@ public class SalePointsController {
     @PostMapping
     public void createSailePoints(@RequestBody SalePointTo salePointTo) {
         salePointService.createSailePoints(salePointTo);
-        //TODO check
+        //TODO checkÏ
     }
 
 }

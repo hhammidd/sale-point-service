@@ -50,7 +50,7 @@ pipeline {
 
         stage("Pull image from docker registry") {
             steps{
-                sh "docker pull hhssaaffii/micro-map:${params.IMAGE_TAG}"
+                sh "docker pull hhssaaffii/sale-point-service:${params.IMAGE_TAG}"
             }
         }
 
