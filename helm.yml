@@ -20,3 +20,6 @@ image: ##DOCKER_REGISTRY##/hhssaaffii/sale-point-service
 
 artifactory:
   name: artifactory
+
+secretKeyRef:
+  name: sale-point-service-db
