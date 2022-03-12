@@ -1,9 +1,9 @@
 properties([
         parameters([
                 string(name: 'service_name', defaultValue: 'micro-geo', description: 'Service-name',),
-                string(name: 'IMAGE_TAG', defaultValue: '11', description: 'Image TAG',),
+                string(name: 'IMAGE_TAG', defaultValue: '', description: 'Image TAG',),
                 string(name: 'branch', defaultValue: 'master', description: 'Which is the branch triggered',),
-                string(name: 'environment', defaultValue: 'sale_tst', description: 'Which cluster you need to deploy, sale_tst/sale_acc/sale_prd',),
+                string(name: 'environment', defaultValue: 'default', description: 'Which cluster you need to deploy, default/bricks-tst/bricks-acc/bricks-prd',),
         ])
 ])
 
@@ -19,6 +19,24 @@ pipeline {
     }
     agent any
     stages {
+
+
+        stage("get version") {
+            steps {
+                script {
+                    if ("${IMAGE_TAG}"?.trim()) {
+                        stage ('Input pam') {
+                            sh 'echo ${IMAGE_TAG}'
+                        }
+                    } else {
+                        stage ('current') {
+                            sh 'echo ${VERSION}'
+                        }
+                    }
+                }
+            }
+        }
+
         stage("git checkout") {
             steps {
                 git 'https://github.com/hhammidd/${service_name}.git'
@@ -86,6 +104,9 @@ pipeline {
 
                 // replace spring boot helm.yml with value.yaml
                 sh "cp ~/apps/apps-helm-charts/helm-checkouts/${IMAGE}/code/helm.yml ~/apps/apps-helm-charts/helm-checkouts/${IMAGE}/charts/springboot-services/values.yaml"
+
+                // cpy secrets to chart dir
+                sh "cp ~/apps/apps-helm-charts/secrets/${IMAGE}/secret.yaml ~/apps/apps-helm-charts/helm-checkouts/${IMAGE}/charts/springboot-services/templates"
                 // remove unwanted code
                 sh "rm -rf ~/apps/apps-helm-charts/helm-checkouts/${IMAGE}/code"
             }
@@ -93,7 +114,7 @@ pipeline {
 
         stage("Install helm and deploy") {
             steps {
-                sh " helm upgrade --install ${service_name}  ~/apps/apps-helm-charts/helm-checkouts/${IMAGE}/charts/springboot-services --set tag=${VERSION}"
+                sh " helm upgrade --install ${service_name}  ~/apps/apps-helm-charts/helm-checkouts/${IMAGE}/charts/springboot-services --set tag=${VERSION} --namespace=${environment}"
             }
         }
 
