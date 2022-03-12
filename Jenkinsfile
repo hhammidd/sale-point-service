@@ -1,6 +1,6 @@
 properties([
         parameters([
-                string(name: 'service_name', defaultValue: 'micro-geo', description: 'Service-name',),
+                string(name: 'service_name', defaultValue: 'sale-point-service', description: 'Service-name',),
                 string(name: 'IMAGE_TAG', defaultValue: '', description: 'Image TAG',),
                 string(name: 'branch', defaultValue: 'master', description: 'Which is the branch triggered',),
                 string(name: 'environment', defaultValue: 'default', description: 'Which cluster you need to deploy, default/bricks-tst/bricks-acc/bricks-prd',),
