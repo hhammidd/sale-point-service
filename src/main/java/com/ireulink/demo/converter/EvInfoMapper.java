@@ -4,6 +4,7 @@ import com.ireulink.demo.dto.EvInfoTo;
 import com.ireulink.demo.model.EvInfo;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -15,8 +16,8 @@ public class EvInfoMapper {
                 evInfo.getId(),
                 evInfo.getCountry(),
                 evInfo.getEvType(),
-                evInfo.getDateInserted(),
-                evInfo.getDateInfo(),
+                evInfo.getDateInserted().toString(),
+                evInfo.getDateInfo().toString(),
                 evInfo.getAmount()
         );
     }
@@ -25,7 +26,7 @@ public class EvInfoMapper {
         EvInfo evInfo = new EvInfo();
 
         evInfo.setId(null);
-        evInfo.setDateInfo(evInfoTo.getDateInfo());
+        evInfo.setDateInfo(LocalDate.now()); // TODO change this
         evInfo.setCountry(evInfoTo.getCountry());
         evInfo.setEvType(evInfoTo.getEvType());
         evInfo.setDateInserted(LocalDateTime.now());

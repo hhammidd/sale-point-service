@@ -7,26 +7,18 @@ public class EvInfoTo {
     private Long id;
     private String country;
     private String evType;
-    private LocalDateTime dateInserted;
-    private LocalDate dateInfo;
+    private String dateInserted;
+    private String dateInfo;
     private Integer amount;
 
     public EvInfoTo() {
     }
 
-    public EvInfoTo(Long id, String country, String evType, LocalDateTime dateInserted, LocalDate dateInfo, Integer amount) {
+    public EvInfoTo(Long id, String country, String evType, String dateInserted, String dateInfo, Integer amount) {
         this.id = id;
         this.country = country;
         this.evType = evType;
         this.dateInserted = dateInserted;
-        this.dateInfo = dateInfo;
-        this.amount = amount;
-    }
-
-    public EvInfoTo(Long id, String country, String evType, LocalDate dateInfo, Integer amount) {
-        this.id = id;
-        this.country = country;
-        this.evType = evType;
         this.dateInfo = dateInfo;
         this.amount = amount;
     }
@@ -55,19 +47,19 @@ public class EvInfoTo {
         this.evType = evType;
     }
 
-    public LocalDateTime getDateInserted() {
+    public String getDateInserted() {
         return dateInserted;
     }
 
-    public void setDateInserted(LocalDateTime dateInserted) {
+    public void setDateInserted(String dateInserted) {
         this.dateInserted = dateInserted;
     }
 
-    public LocalDate getDateInfo() {
+    public String getDateInfo() {
         return dateInfo;
     }
 
-    public void setDateInfo(LocalDate dateInfo) {
+    public void setDateInfo(String dateInfo) {
         this.dateInfo = dateInfo;
     }
 
