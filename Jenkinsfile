@@ -1,3 +1,4 @@
+@Library('javahome-demo') _
 properties([
         parameters([
                 string(name: 'service_name', defaultValue: 'sale-point-service', description: 'Service-name',),
