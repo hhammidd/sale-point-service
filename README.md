@@ -42,3 +42,11 @@
 * `cd jenkins/workspace` is workspace 
 * Take a backup from jenkins:
 `tar -czf jenkins_home_end_m4.tgz .jenkins/`
+
+
+## Shared lib
+hosting the pipleine methods for jenkinsfile
+https://github.com/hhammidd/sharedlibs
+* helm.yml include all needed values for helm chart
+* There should be secrets in right place
+* DB names should be correct
