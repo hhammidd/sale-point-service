@@ -1,0 +1,22 @@
+replicaCount: 1
+tag: 8
+namespace: default
+service:
+  type: NodePort
+  name: sale-point-service-svc
+
+ImageName: hhssaaffii/sale-point-service
+
+port: 8089
+
+fullName: sale-point-service
+
+appName: sale-point-service
+
+portNumber: 8089
+host: hello-world-5.pvt
+
+image: ##DOCKER_REGISTRY##/hhssaaffii/sale-point-service
+
+artifactory:
+  name: artifactory
