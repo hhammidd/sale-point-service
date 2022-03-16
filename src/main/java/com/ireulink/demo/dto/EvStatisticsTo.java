@@ -1,22 +1,26 @@
 package com.ireulink.demo.dto;
 
-public class EvInfoTo {
+import java.time.YearMonth;
+
+public class EvStatisticsTo {
     private Long id;
     private String country;
     private String evType;
+    private Integer year;
+    private Integer month;
     private String dateInserted;
-    private String dateInfo;
     private Integer amount;
 
-    public EvInfoTo() {
+    public EvStatisticsTo() {
     }
 
-    public EvInfoTo(Long id, String country, String evType, String dateInserted, String dateInfo, Integer amount) {
+    public EvStatisticsTo(Long id, String country, String evType, Integer year, Integer month, String dateInserted, Integer amount) {
         this.id = id;
         this.country = country;
         this.evType = evType;
+        this.year = year;
+        this.month = month;
         this.dateInserted = dateInserted;
-        this.dateInfo = dateInfo;
         this.amount = amount;
     }
 
@@ -44,20 +48,28 @@ public class EvInfoTo {
         this.evType = evType;
     }
 
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getMonth() {
+        return month;
+    }
+
+    public void setMonth(Integer month) {
+        this.month = month;
+    }
+
     public String getDateInserted() {
         return dateInserted;
     }
 
     public void setDateInserted(String dateInserted) {
         this.dateInserted = dateInserted;
-    }
-
-    public String getDateInfo() {
-        return dateInfo;
-    }
-
-    public void setDateInfo(String dateInfo) {
-        this.dateInfo = dateInfo;
     }
 
     public Integer getAmount() {
