@@ -1,9 +1,10 @@
 replicaCount: 1
-tag: 8
+
 namespace: default
 service:
   type: NodePort
   name: sale-point-service-svc
+  nodePort: 30183 // should be constant because of FE
 
 ImageName: hhssaaffii/sale-point-service
 
