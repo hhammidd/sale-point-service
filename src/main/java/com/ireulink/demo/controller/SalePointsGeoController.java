@@ -5,7 +5,10 @@ import com.ireulink.demo.service.SalePointGeoFilterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -32,6 +35,7 @@ public class SalePointsGeoController {
     /**
      * Get the name and Id of province/ regions / comunes
      * filter their Ids
+     *
      * @param salePointGeoBeta
      * @return
      */
@@ -66,17 +70,17 @@ public class SalePointsGeoController {
         System.out.printf("test market " + salePointGeoWithCombineFilter.getMarket());
 
         return new SalePointsInfoTo(Arrays.asList(
-                new SalePointTo(1L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(2L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(3L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(4L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(5L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(6L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(7L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(8L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(9L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(10L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(11L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws")
+                new SalePointTo(1L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(2L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(3L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(4L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(5L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(6L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(7L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(8L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(9L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(10L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(11L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws")
         ));
         //TODO check
     }
@@ -88,18 +92,51 @@ public class SalePointsGeoController {
         geosTo.getGeos().stream().forEach(s -> System.out.println(s));
         System.out.println("============finished===========");
         return new SalePointsInfoTo(Arrays.asList(
-                new SalePointTo(1L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(2L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(3L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(4L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(5L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(6L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(7L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(8L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(9L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(10L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
-                new SalePointTo(11L, "EV", "sharbatoghli" , 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws")
+                new SalePointTo(1L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(2L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(3L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(4L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(5L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(6L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(7L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(8L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(9L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(10L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws"),
+                new SalePointTo(11L, "EV", "sharbatoghli", 11, "1111cap", "Milan", "Milan", "Italy", "tel", "sswwsw", "swsws", "swssws")
         ));
         //TODO check
+    }
+
+    @GetMapping("/countries-map")
+    public CountriesBarTo getCountriesMock() { // TODO make with year
+
+        // Make service for it
+        System.out.println("============finished===========");
+
+
+        List<BarValuesTo> barValues = new ArrayList<>();
+        BarValuesTo barValuesToNL = createBarChart("NL");
+        BarValuesTo barValuesToIT = createBarChart("IT");
+        BarValuesTo barValuesToBE = createBarChart("BE");
+        barValues.add(barValuesToNL);
+        barValues.add(barValuesToIT);
+        barValues.add(barValuesToBE);
+        return new CountriesBarTo(barValues);
+    }
+
+    private BarValuesTo createBarChart(String country) {
+        List<Double> data = new ArrayList<>();
+        for (int i = 0; i < 12; i++) {
+            data.add(createBigDecimalDataFor12Weeks());
+        }
+        return new BarValuesTo(country, data);
+    }
+
+    private Double createBigDecimalDataFor12Weeks() {
+        BigDecimal max = new BigDecimal(10);
+        BigDecimal randFromDouble = new BigDecimal(Math.random());
+        BigDecimal actualRandomDec = randFromDouble.multiply(max);
+        return actualRandomDec
+                .setScale(2, BigDecimal.ROUND_DOWN).doubleValue();
     }
 }
