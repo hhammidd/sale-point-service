@@ -107,6 +107,40 @@ public class SalePointsGeoController {
         //TODO check
     }
 
+    @GetMapping("/countries-map/{year}")
+    public YearChartValues getYearChartValue(@PathVariable Integer year) { // TODO make with year
+        // Make service for it
+        System.out.println("============Start===========");
+
+        List<ChartValues> chartValues = new ArrayList<>();
+        ChartValues jan = new ChartValues("JAN", new Double(100));
+        ChartValues feb = new ChartValues("FEB", new Double(105));
+        ChartValues mar = new ChartValues("MAR", new Double(170));
+        ChartValues apr = new ChartValues("APR", new Double(90));
+        ChartValues may = new ChartValues("MAY", new Double(70));
+        ChartValues jun = new ChartValues("JUN", new Double(120));
+        ChartValues jul = new ChartValues("JUL", new Double(100));
+        ChartValues aug = new ChartValues("AUG", new Double(111));
+        ChartValues sep = new ChartValues("SEP", new Double(50));
+        ChartValues oct = new ChartValues("OCT", new Double(70));
+        ChartValues nov = new ChartValues("NOV", new Double(40));
+        ChartValues dec = new ChartValues("DEC", new Double(50));
+        chartValues.add(jan);
+        chartValues.add(feb);
+        chartValues.add(mar);
+        chartValues.add(apr);
+        chartValues.add(may);
+        chartValues.add(jun);
+        chartValues.add(jul);
+        chartValues.add(aug);
+        chartValues.add(sep);
+        chartValues.add(oct);
+        chartValues.add(nov);
+        chartValues.add(dec);
+
+        return new YearChartValues(chartValues);
+    }
+
     @GetMapping("/countries-map")
     public CountriesBarTo getCountriesMock() { // TODO make with year
 
