@@ -50,3 +50,8 @@ https://github.com/hhammidd/sharedlibs
 * helm.yml include all needed values for helm chart
 * There should be secrets in right place
 * DB names should be correct
+
+# owasp 
+* `mvn verify -Powasp`
+* `mvn versions:display-property-updates`
+* 
