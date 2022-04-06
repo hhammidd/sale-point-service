@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.ireulink</groupId>
     <artifactId>sale-point-service</artifactId>
-    <version>0.0.12</version>
+    <version>0.0.13</version>
     <name>sale-point-service</name>
     <description>Sale point service</description>
     <profiles>
