@@ -27,6 +27,12 @@ pipeline {
             }
         }
 
+        stage("OWASP") {
+            steps {
+                checkOwasp()
+            }
+        }
+
         stage("start build and push image") {
             steps {
                 buildimage("${VERSION}")
