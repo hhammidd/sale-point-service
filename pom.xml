@@ -52,7 +52,7 @@
         <springfox-swagger-ui.version>3.0.0</springfox-swagger-ui.version>
         <spring-cloud-starter-openfeign.version>3.1.1</spring-cloud-starter-openfeign.version>
         <flyway-maven-plugin.version>8.5.6</flyway-maven-plugin.version>
-        <dependency-check-maven.version>7.0.1</dependency-check-maven.version>
+        <dependency-check-maven.version>7.0.4</dependency-check-maven.version>
     </properties>
     <dependencies>
         <dependency>
