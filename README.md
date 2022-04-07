@@ -54,4 +54,5 @@ https://github.com/hhammidd/sharedlibs
 # owasp 
 * `mvn verify -Powasp`
 * `mvn versions:display-property-updates`
-* 
+# docker remove repo
+`docker rmi $(docker images | grep 'hhssaaffii/micro-geo')`
