@@ -8,7 +8,7 @@ properties([
         ])
 ])
 currentBuild.displayName = "${service_name}-#"+currentBuild.number
-currentBuild.description = "blab "
+currentBuild.description = "<b>environment: </b>${environment}<br/><b>version:</b>${VERSION}<br/><b>PR:</b>12"
 pipeline {
 
     environment {
