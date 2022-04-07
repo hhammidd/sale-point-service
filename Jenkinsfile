@@ -11,6 +11,8 @@ currentBuild.displayName = "${service_name}-#"+currentBuild.number
 pipeline {
 
     environment {
+
+
         registry = "hhssaaffii/${service_name}"
         registryCredential = ''
         dockerImage = ''
