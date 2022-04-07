@@ -40,6 +40,9 @@ pipeline {
         stage("start build and push image") {
             steps {
                 buildimage("${VERSION}")
+                script {
+                    currentBuild.description = "<b>Image built: </b>${VERSION}<br/>"
+                }
             }
         }
 
