@@ -27,7 +27,6 @@ pipeline {
                 script {
                     currentBuild.description = "<b>environment: </b>${environment}<br/><b>version:</b>${VERSION}<br/><b>PR:</b>TODO"
                 }
-//                currentBuild.description = "<b>environment: </b>default<br/><b>version:</b>1.2.2<br/><b>PR:</b>12"
             }
         }
 
@@ -41,7 +40,7 @@ pipeline {
             steps {
                 buildimage("${VERSION}")
                 script {
-                    currentBuild.description = "<b>Image built: </b>${VERSION}<br/>"
+                    currentBuild.description = "<b>environment: </b>${environment}<br/><b>version:</b>${VERSION}<br/><b>Image done:</b>${VERSION}"
                 }
             }
         }
