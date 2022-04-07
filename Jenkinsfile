@@ -24,6 +24,7 @@ pipeline {
         stage("start build process") {
             steps {
                 buildapp("${service_name}")
+                currentBuild.description = "#${BUILD_NUMBER} (v${env.VERSION})"
             }
         }
 
