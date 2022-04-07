@@ -23,10 +23,7 @@ pipeline {
 
         stage("start build process") {
             steps {
-                buildapp("${service_name}")
-                script {
-                    currentBuild.description = "<b>environment: </b>${environment}<br/><b>version:</b>${VERSION}<br/><b>PR:</b>TODO"
-                }
+                startBuild("${service_name}", "${VERSION}")
             }
         }
 
@@ -38,10 +35,7 @@ pipeline {
 
         stage("start build and push image") {
             steps {
-                buildimage("${VERSION}")
-                script {
-                    currentBuild.description = "<b>environment: </b>${environment}<br/><b>version:</b>${VERSION}<br/><b>Image done:</b>${VERSION}"
-                }
+                buildimageProcess("${VERSION}")
             }
         }
 
