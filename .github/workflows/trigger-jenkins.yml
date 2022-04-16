@@ -37,7 +37,7 @@ jobs:
           job_params: |
             {
               "service_name": "sale-point-service",
-              "branch": "${{ steps.extract_branch.outputs.branch }",
+              "branch": "${ steps.extract_branch.outputs.branch }",
               "environment": "tst"
             }
           job_timeout: "3600" # Default 30 sec. (optional)
