@@ -39,11 +39,11 @@ pipeline {
         stage("start build and push image") {
             steps {
                 script {
-                    if ("${environment}"?.trim() == "master") {
-                        buildimageProcess("${VERSION}")
+                    if ("${environment}"?.trim() == "prd") {
+                        VERSION_PRD = "${VERSION}".substring(0, ${VERSION}.indexOf('-')) // maybe better way
+                        buildimageProcess("${VERSION_PRD}")
                     } else {
-                        VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
-                        buildimageProcess("${VERSION_SNAPSHOT}")
+                        buildimageProcess("${VERSION}")
                     }
                 }
 
