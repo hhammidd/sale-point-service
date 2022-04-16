@@ -55,14 +55,27 @@ pipeline {
             steps {
                 script {
                     if ("${environment}"?.trim() == "master") {
-                        createhelm("${IMAGE}", "${VERSION}", "${branch}")
+                        createhelm("${IMAGE}", "${VERSION}", "master")
                     } else {
                         VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
-                        createhelm("${IMAGE}", "${VERSION_SNAPSHOT}", "${branch}")
+                        createhelm("${IMAGE}", "${VERSION}", "feature") // TODO
                     }
                 }
+
             }
         }
+//        stage("deploy") {
+//            steps {
+//                script {
+//                    if ("${environment}"?.trim() == "master") {
+//                        createhelm("${IMAGE}", "${VERSION}", "${branch}")
+//                    } else {
+//                        VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
+//                        createhelm("${IMAGE}", "${VERSION_SNAPSHOT}", "${branch}")
+//                    }
+//                }
+//            }
+//        }
 
     }
 }
