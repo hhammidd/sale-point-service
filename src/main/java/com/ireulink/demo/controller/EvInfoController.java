@@ -20,7 +20,7 @@ public class EvInfoController {
         return evInfosService.getEvInfos();
     }
 
-    @GetMapping("/testv2")
+    @GetMapping("/testv3")
     public List<EvInfoTo> getEvInfosTes() {
         return evInfosService.getEvInfos();
     }
