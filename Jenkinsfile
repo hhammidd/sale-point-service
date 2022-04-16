@@ -65,15 +65,15 @@ pipeline {
             }
         }
 
-//        stage("bump up version") {
-//            steps {
-//                script {
-//                    if ("${environment}"?.trim() == "master") {
-//                        bumpupVersion()
-//                    }
-//                }
-//            }
-//        }
+        stage("bump up version") {
+            steps {
+                script {
+                    if ("${environment}"?.trim() == "master") {
+                        bumpupVersion("${IMAGE}")
+                    }
+                }
+            }
+        }
 
     }
 }
