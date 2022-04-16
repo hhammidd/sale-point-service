@@ -55,10 +55,10 @@ pipeline {
             steps {
                 script {
                     if ("${environment}"?.trim() == "master") {
-                        createhelm("${IMAGE}", "${VERSION}")
+                        createhelm("${service_name}", "${VERSION}")
                     } else {
                         VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
-                        createhelm("${IMAGE}", "${VERSION_SNAPSHOT}") // TODO
+                        createhelm("${service_name}", "${VERSION_SNAPSHOT}") // TODO
                     }
                 }
 
@@ -69,7 +69,7 @@ pipeline {
             steps {
                 script {
                     if ("${environment}"?.trim() == "master") {
-                        bumpupVersion("${IMAGE}")
+                        bumpupVersion("${service_name}")
                     }
                 }
             }
