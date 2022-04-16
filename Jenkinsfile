@@ -21,6 +21,15 @@ pipeline {
     }
     agent any
     stages {
+
+        script {
+            if ("${environment}"?.trim() == "master") {
+                sh 'echo version is ${VERSION}'
+            } else {
+                VERSION = "${VERSION}-SNAPSHOT"
+                }
+            }
+        }
         stage("start build process") {
             steps {
 //                startBuild("${service_name}", "${VERSION}")
