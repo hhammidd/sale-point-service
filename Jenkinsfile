@@ -58,24 +58,11 @@ pipeline {
                         createhelm("${IMAGE}", "${VERSION}", "master")
                     } else {
                         VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
-                        createhelm("${IMAGE}", "${VERSION_SNAPSHOT}", "${branch}") // TODO
+                        createhelm("${IMAGE}", "${VERSION_SNAPSHOT}") // TODO
                     }
                 }
 
             }
         }
-//        stage("deploy") {
-//            steps {
-//                script {
-//                    if ("${environment}"?.trim() == "master") {
-//                        createhelm("${IMAGE}", "${VERSION}", "${branch}")
-//                    } else {
-//                        VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
-//                        createhelm("${IMAGE}", "${VERSION_SNAPSHOT}", "${branch}")
-//                    }
-//                }
-//            }
-//        }
-
     }
 }
