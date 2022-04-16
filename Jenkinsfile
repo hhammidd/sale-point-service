@@ -18,22 +18,11 @@ pipeline {
         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
         IMAGE = readMavenPom().getArtifactId()
         VERSION = readMavenPom().getVersion()
-        if ("${environment}"?.trim() == "master") {
-            sh 'echo version is ${VERSION}'
-        } else {
-            VERSION = "${VERSION}-SNAPSHOT"
-        }
+
     }
     agent any
     stages {
 
-//        script {
-//            if ("${environment}"?.trim() == "master") {
-//                sh 'echo version is ${VERSION}'
-//            } else {
-//                VERSION = "${VERSION}-SNAPSHOT"
-//            }
-//        }
 
         stage("start build process") {
             steps {
@@ -50,13 +39,29 @@ pipeline {
 
         stage("start build and push image") {
             steps {
-                buildimageProcess("${VERSION}")
+                script {
+                    if ("${environment}"?.trim() == "master") {
+                        buildimageProcess("${VERSION}")
+                    } else {
+                        VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
+                        buildimageProcess("${VERSION_SNAPSHOT}")
+                    }
+                }
+
             }
         }
 
         stage("deploy") {
             steps {
-                createhelm("${IMAGE}")
+                script {
+                    if ("${environment}"?.trim() == "master") {
+                        createhelm("${IMAGE}")
+                    } else {
+                        VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
+                        createhelm("${VERSION_SNAPSHOT}")
+                    }
+                }
+
             }
         }
 
