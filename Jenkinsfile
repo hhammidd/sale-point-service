@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     if ("${environment}"?.trim() == "prd") {
-                        VERSION_PRD = "${VERSION}".substring(0, ${VERSION}.indexOf('-')) // maybe better way
+                        VERSION_PRD = "${VERSION}".substring(0, "${VERSION}".indexOf('-')) // maybe better way
                         buildimageProcess("${VERSION_PRD}")
                     } else {
                         buildimageProcess("${VERSION}")
