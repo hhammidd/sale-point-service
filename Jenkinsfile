@@ -29,7 +29,7 @@ pipeline {
                 VERSION = "${VERSION}-SNAPSHOT"
                 }
             }
-        }
+
         stage("start build process") {
             steps {
 //                startBuild("${service_name}", "${VERSION}")
