@@ -7,7 +7,7 @@ properties([
                 string(name: 'environment', defaultValue: 'tst', description: 'Which cluster you need to deploy, default/bricks-tst/bricks-acc/bricks-prd',),
         ])
 ])
-currentBuild.displayName = "${service_name}-#"+currentBuild.number
+currentBuild.displayName = "${service_name}-#" + currentBuild.number
 pipeline {
 
     environment {
@@ -18,17 +18,22 @@ pipeline {
         //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
         IMAGE = readMavenPom().getArtifactId()
         VERSION = readMavenPom().getVersion()
+        if ("${environment}"?.trim() == "master") {
+            sh 'echo version is ${VERSION}'
+        } else {
+            VERSION = "${VERSION}-SNAPSHOT"
+        }
     }
     agent any
     stages {
 
-        script {
-            if ("${environment}"?.trim() == "master") {
-                sh 'echo version is ${VERSION}'
-            } else {
-                VERSION = "${VERSION}-SNAPSHOT"
-                }
-            }
+//        script {
+//            if ("${environment}"?.trim() == "master") {
+//                sh 'echo version is ${VERSION}'
+//            } else {
+//                VERSION = "${VERSION}-SNAPSHOT"
+//            }
+//        }
 
         stage("start build process") {
             steps {
