@@ -12,7 +12,6 @@ pipeline {
 
     environment {
 
-
         registry = "hhssaaffii/${service_name}"
         registryCredential = ''
         dockerImage = ''
