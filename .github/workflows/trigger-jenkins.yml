@@ -20,19 +20,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        id: extract_branch
+
       - name: Trigger Jenkins Job
         uses: toptal/jenkins-job-trigger-action@master
         with:
           jenkins_url: "http://94.130.228.242:8080/"
           jenkins_user: ${{ secrets.JENKINS_USER }}
           jenkins_token: ${{ secrets.JENKINS_TOKEN }}
-#           proxy: ${{ secrets.JENKINS_PROXY }}
+          #           proxy: ${{ secrets.JENKINS_PROXY }}
           job_name: "springboot-pipeline-template"
           job_params: |
             {
               "service_name": "sale-point-service",
-              "branch": "master",
-              "environment": "default"
+              "branch": "${{ steps.extract_branch.outputs.branch }",
+              "environment": "tst"
             }
           job_timeout: "3600" # Default 30 sec. (optional)
