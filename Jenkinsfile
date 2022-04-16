@@ -23,7 +23,6 @@ pipeline {
     agent any
     stages {
 
-
         stage("start build process") {
             steps {
                 startBuild("${service_name}", "${VERSION}")
@@ -56,6 +55,7 @@ pipeline {
                 script {
                     if ("${environment}"?.trim() == "master") {
                         createhelm("${service_name}", "${VERSION}")
+                        bumpupVersion("${service_name}")
                     } else {
                         VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
                         createhelm("${service_name}", "${VERSION_SNAPSHOT}") // TODO
@@ -65,15 +65,15 @@ pipeline {
             }
         }
 
-        stage("bump up version") {
-            steps {
-                script {
-                    if ("${environment}"?.trim() == "master") {
-                        bumpupVersion("${service_name}")
-                    }
-                }
-            }
-        }
+//        stage("bump up version") {
+//            steps {
+//                script {
+//                    if ("${environment}"?.trim() == "master") {
+//                        bumpupVersion("${service_name}")
+//                    }
+//                }
+//            }
+//        }
 
     }
 }
