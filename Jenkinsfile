@@ -55,10 +55,10 @@ pipeline {
             steps {
                 script {
                     if ("${environment}"?.trim() == "master") {
-                        createhelm("${IMAGE}", "${VERSION}")
+                        createhelm("${IMAGE}", "${VERSION}", "master")
                     } else {
                         VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
-                        createhelm("${IMAGE}", "${VERSION_SNAPSHOT}") // TODO
+                        createhelm("${IMAGE}", "${VERSION_SNAPSHOT}", "${branch}") // TODO
                     }
                 }
 
