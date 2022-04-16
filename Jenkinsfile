@@ -52,8 +52,8 @@ pipeline {
         stage("deploy") {
             steps {
                 script {
-                    if ("${environment}"?.trim() == "master") {
-                        createhelm("${service_name}", "${VERSION}")
+                    if ("${environment}"?.trim() == "prd") {
+                        createhelm("${service_name}", "${VERSION}") // TODO nodePOrt different than test
                     } else {
                         VERSION_SNAPSHOT = "${VERSION}"
                         createhelm("${service_name}", "${VERSION_SNAPSHOT}") // TODO
@@ -66,8 +66,8 @@ pipeline {
         stage("bump up version") {
             steps {
                 script {
-                    if ("${environment}"?.trim() == "master") {
-                        bumpupVersion()
+                    if ("${environment}"?.trim() == "prd") {
+                        bumpupVersion("${service_name}", "${branch}")
                     } else {
                         sh 'echo not bump feature'
                     }
