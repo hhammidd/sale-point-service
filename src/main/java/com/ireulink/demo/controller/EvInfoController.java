@@ -20,6 +20,11 @@ public class EvInfoController {
         return evInfosService.getEvInfos();
     }
 
+    @GetMapping("/test")
+    public List<EvInfoTo> getEvInfosTes() {
+        return evInfosService.getEvInfos();
+    }
+
     @PostMapping
     public void createEvInfo(@RequestBody EvInfoTo evInfoTo) {
         evInfosService.createEvInfo(evInfoTo);
