@@ -23,7 +23,8 @@ pipeline {
     stages {
         stage("start build process") {
             steps {
-                startBuild("${service_name}", "${VERSION}")
+//                startBuild("${service_name}", "${VERSION}")
+                startBuild("${service_name}", "${VERSION}", "${branch}")
             }
         }
 
