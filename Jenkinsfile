@@ -69,7 +69,7 @@ pipeline {
             steps {
                 script {
                     if ("${environment}"?.trim() == "master") {
-                        bumpupVersion("${IMAGE}")
+                        bumpupVersion()
                     }
                 }
             }
