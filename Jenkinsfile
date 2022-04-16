@@ -26,7 +26,6 @@ pipeline {
         stage("start build process") {
             steps {
                 startBuild("${service_name}", "${VERSION}")
-//                startBuild("${service_name}", "${VERSION}", "${branch}")
             }
         }
 
@@ -55,9 +54,8 @@ pipeline {
                 script {
                     if ("${environment}"?.trim() == "master") {
                         createhelm("${service_name}", "${VERSION}")
-//                        bumpupVersion("${service_name}")
                     } else {
-                        VERSION_SNAPSHOT = "${VERSION}-SNAPSHOT"
+                        VERSION_SNAPSHOT = "${VERSION}"
                         createhelm("${service_name}", "${VERSION_SNAPSHOT}") // TODO
                     }
                 }
