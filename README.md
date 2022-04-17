@@ -56,3 +56,8 @@ https://github.com/hhammidd/sharedlibs
 * `mvn versions:display-property-updates`
 # docker remove repo
 `docker rmi $(docker images | grep 'hhssaaffii/micro-geo')`
+
+# Jenkinsfile
+## feature branch:
+* put environment as tst
+* put branch name as feature branch PR

@@ -3,7 +3,7 @@ properties([
         parameters([
                 string(name: 'service_name', defaultValue: 'sale-point-service', description: 'Service-name',),
                 string(name: 'IMAGE_TAG', defaultValue: '', description: 'Image TAG',),
-                string(name: 'branch', defaultValue: 'master', description: 'Which is the branch triggered',),
+                string(name: 'branch', defaultValue: 'EV-1-first-branch', description: 'Which is the branch triggered',),
                 string(name: 'environment', defaultValue: 'tst', description: 'Which cluster you need to deploy, default/bricks-tst/bricks-acc/bricks-prd',),
         ])
 ])
