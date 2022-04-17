@@ -10,13 +10,12 @@ service:
 ImageName: hhssaaffii/sale-point-service
 
 port: 8089
-portTest: 8094
+portTest: 8095
 
 fullName: sale-point-service
 
 appName: sale-point-service
 
-portNumber: 8089
 host: hello-world-5.pvt
 
 image: ##DOCKER_REGISTRY##/hhssaaffii/sale-point-service
