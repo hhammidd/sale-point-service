@@ -54,10 +54,11 @@ pipeline {
             steps {
                 script {
                     if ("${environment}"?.trim() == "prd" || "master" == branch?.trim()) {
-                        createhelm("${service_name}", "${VERSION}") // TODO nodePOrt different than test
+                        VERSION_PRD = "${VERSION}".substring(0, "${VERSION}".indexOf('-')) // maybe better way
+                        createhelm("${service_name}", "${VERSION_PRD}") // TODO nodePOrt different than test
                     } else {
                         VERSION_SNAPSHOT = "${VERSION}"
-                        createhelm("${service_name}", "${VERSION_SNAPSHOT}") // TODO
+                        createhelm("${service_name}", "${VERSION}") // TODO
                     }
                 }
 
