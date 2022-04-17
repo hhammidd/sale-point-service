@@ -39,7 +39,7 @@ pipeline {
         stage("start build and push image") {
             steps {
                 script {
-                    if ("${environment}"?.trim() == "prd") {
+                    if ("${environment}"?.trim() == "prd" || "master" == branch?.trim()) { // if it is branch master and or prd env
                         VERSION_PRD = "${VERSION}".substring(0, "${VERSION}".indexOf('-')) // maybe better way
                         buildimageProcess("${VERSION_PRD}")
                     } else {
@@ -53,7 +53,7 @@ pipeline {
         stage("deploy") {
             steps {
                 script {
-                    if ("${environment}"?.trim() == "prd") {
+                    if ("${environment}"?.trim() == "prd" || "master" == branch?.trim()) {
                         createhelm("${service_name}", "${VERSION}") // TODO nodePOrt different than test
                     } else {
                         VERSION_SNAPSHOT = "${VERSION}"
@@ -67,7 +67,7 @@ pipeline {
         stage("bump up version") {
             steps {
                 script {
-                    if ("${environment}"?.trim() == "prd") {
+                    if ("${environment}"?.trim() == "prd" || "master" == branch?.trim()) {
                         bumpupVersion("${service_name}", "${branch}")
                     } else {
                         sh 'echo not bump feature'
