@@ -4,7 +4,8 @@ namespace: default
 service:
   type: NodePort
   name: sale-point-service-svc
-  nodePort: 30183  # should be constant because of FE
+  nodePortTst: 30188
+  nodePortPrd: 30183
 
 ImageName: hhssaaffii/sale-point-service
 
