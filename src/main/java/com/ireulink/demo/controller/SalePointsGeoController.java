@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.Month;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -111,34 +113,77 @@ public class SalePointsGeoController {
     public YearChartValues getYearChartValue(@PathVariable Integer year) { // TODO make with year
         // Make service for it
         System.out.println("============Start===========");
-
+        LocalDate currentdate = LocalDate.now();
+        int currentYear = currentdate.getYear();
         List<ChartValues> chartValues = new ArrayList<>();
-        ChartValues jan = new ChartValues("JAN", new Double(100));
-        ChartValues feb = new ChartValues("FEB", new Double(105));
-        ChartValues mar = new ChartValues("MAR", new Double(170));
-        ChartValues apr = new ChartValues("APR", new Double(90));
-        ChartValues may = new ChartValues("MAY", new Double(70));
-        ChartValues jun = new ChartValues("JUN", new Double(120));
-        ChartValues jul = new ChartValues("JUL", new Double(100));
-        ChartValues aug = new ChartValues("AUG", new Double(111));
-        ChartValues sep = new ChartValues("SEP", new Double(50));
-        ChartValues oct = new ChartValues("OCT", new Double(70));
-        ChartValues nov = new ChartValues("NOV", new Double(40));
-        ChartValues dec = new ChartValues("DEC", new Double(50));
-        chartValues.add(jan);
-        chartValues.add(feb);
-        chartValues.add(mar);
-        chartValues.add(apr);
-        chartValues.add(may);
-        chartValues.add(jun);
-        chartValues.add(jul);
-        chartValues.add(aug);
-        chartValues.add(sep);
-        chartValues.add(oct);
-        chartValues.add(nov);
-        chartValues.add(dec);
+        if (currentYear == year) {
+            chartValues = getCurrentYearChart();
+        } else {
+            chartValues = getOtherMockYear();
+        }
 
         return new YearChartValues(chartValues);
+    }
+
+    private List<ChartValues> getOtherMockYear() {
+        List<ChartValues> chartValues = new ArrayList<>();
+        Random r = new Random();
+        for (Month month : Month.values()) {
+            BigDecimal valueMock = new BigDecimal(70.0 + (189.0 - 70.0) * r.nextDouble()).setScale(2, RoundingMode.HALF_UP);
+            chartValues.add(new ChartValues(month.toString().substring(0,3), valueMock.doubleValue()));
+        }
+//        Arrays.stream(Month.values()).forEach(
+//                chartValues.add(new ChartValues(it.substring(0,3), 70.0 + (189.0 - 70.0) * r.nextDouble()));
+//        );
+        return chartValues;
+
+    }
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+    private List<ChartValues> getCurrentYearChart() {
+        LocalDate currentdate = LocalDate.now();
+        Month currentMonth = currentdate.getMonth();
+        int currentMonthMonth = currentdate.getMonth().getValue();
+//        String currentMonth = currentdate.getMonth().toString().substring(0, 3);
+        System.out.println("current month:" + currentMonth);
+        List<ChartValues> chartValues = new ArrayList<>();
+
+        Random r = new Random();
+        for (int i =1; i<= 12; i++) {
+            if (i <= currentMonthMonth ) {
+                BigDecimal valueMock = new BigDecimal(70.0 + (189.0 - 70.0) * r.nextDouble()).setScale(2, RoundingMode.HALF_UP);
+                chartValues.add(new ChartValues(Month.of(i).toString().substring(0,3), valueMock.doubleValue()));
+            } else {
+                chartValues.add(new ChartValues(Month.of(i).toString().substring(0,3), 0.0));
+            }
+
+        }
+//        ChartValues jan = new ChartValues("JAN", new Double(105));
+//        ChartValues feb = new ChartValues("FEB", new Double(105));
+//        ChartValues mar = new ChartValues("MAR", new Double(170));
+//        ChartValues apr = new ChartValues("APR", new Double(90));
+//        ChartValues may = new ChartValues("MAY", new Double(70));
+//        ChartValues jun = new ChartValues("JUN", new Double(120));
+//        ChartValues jul = new ChartValues("JUL", new Double(100));
+//        ChartValues aug = new ChartValues("AUG", new Double(111));
+//        ChartValues sep = new ChartValues("SEP", new Double(50));
+//        ChartValues oct = new ChartValues("OCT", new Double(70));
+//        ChartValues nov = new ChartValues("NOV", new Double(40));
+//        ChartValues dec = new ChartValues("DEC", new Double(50));
+//
+//        chartValues.add(jan);
+//        chartValues.add(feb);
+//        chartValues.add(mar);
+//        chartValues.add(apr);
+//        chartValues.add(may);
+//        chartValues.add(jun);
+//        chartValues.add(jul);
+//        chartValues.add(aug);
+//        chartValues.add(sep);
+//        chartValues.add(oct);
+//        chartValues.add(nov);
+//        chartValues.add(dec);
+
+        return chartValues;
     }
 
     @GetMapping("/countries-map")
